@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { signUp } from '@/lib/api';
+import { motion } from 'framer-motion';
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
@@ -59,74 +60,83 @@ export default function SignUp() {
           <span>Back to home</span>
         </Link>
         
-        <Card className="border-0 shadow-xl">
-          <CardHeader className="space-y-1">
-            <div className="flex items-center gap-2 mb-2">
-              <Mail className="h-6 w-6 text-indigo-600" />
-              <CardTitle className="text-2xl">Create an account</CardTitle>
-            </div>
-            <CardDescription>
-              Enter your email and create a password to get started
-            </CardDescription>
-          </CardHeader>
-          <form onSubmit={handleSubmit}>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input 
-                  id="email" 
-                  type="email" 
-                  placeholder="you@example.com" 
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Card className="border-0 shadow-xl">
+            <CardHeader className="space-y-1">
+              <div className="flex items-center gap-2 mb-2">
+                <Mail className="h-6 w-6 text-indigo-600" />
+                <CardTitle className="text-2xl">Create an account</CardTitle>
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
-                <Input 
-                  id="password" 
-                  type="password" 
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="confirmPassword">Confirm Password</Label>
-                <Input 
-                  id="confirmPassword" 
-                  type="password" 
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
-                />
-              </div>
-            </CardContent>
-            <CardFooter className="flex flex-col">
-              <Button 
-                type="submit" 
-                className="w-full bg-indigo-600 hover:bg-indigo-700"
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Creating account...
-                  </>
-                ) : (
-                  "Sign Up"
-                )}
-              </Button>
-              <div className="mt-4 text-center text-sm">
-                Already have an account?{" "}
-                <Link href="/login" className="text-indigo-600 hover:underline">
-                  Log in
-                </Link>
-              </div>
-            </CardFooter>
-          </form>
-        </Card>
+              <CardDescription>
+                Enter your email and create a password to get started
+              </CardDescription>
+            </CardHeader>
+            <form onSubmit={handleSubmit}>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input 
+                    id="email" 
+                    type="email" 
+                    placeholder="you@example.com" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="transition-all duration-200 focus:ring-2 focus:ring-violet-500"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="password">Password</Label>
+                  <Input 
+                    id="password" 
+                    type="password" 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="transition-all duration-200 focus:ring-2 focus:ring-violet-500"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="confirmPassword">Confirm Password</Label>
+                  <Input 
+                    id="confirmPassword" 
+                    type="password" 
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                    className="transition-all duration-200 focus:ring-2 focus:ring-violet-500"
+                  />
+                </div>
+              </CardContent>
+              <CardFooter className="flex flex-col">
+                <Button 
+                  type="submit" 
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 transition-all duration-200"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Creating account...
+                    </>
+                  ) : (
+                    "Sign Up"
+                  )}
+                </Button>
+                <div className="mt-4 text-center text-sm">
+                  Already have an account?{" "}
+                  <Link href="/login" className="text-indigo-600 hover:underline">
+                    Log in
+                  </Link>
+                </div>
+              </CardFooter>
+            </form>
+          </Card>
+        </motion.div>
       </div>
     </div>
   );

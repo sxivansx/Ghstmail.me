@@ -2,13 +2,21 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Mail, Copy, Trash2, Plus, LogOut, Loader2 } from 'lucide-react';
+import { Mail, Copy, Trash2, Plus, LogOut, Loader2, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { useAuthStore } from '@/lib/auth';
 import { getDummyEmail, listAllEmails, deleteDummyEmail } from '@/lib/api';
 import { motion } from 'framer-motion';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 type DummyEmail = {
   _id: string;
@@ -21,6 +29,8 @@ export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [isGenerating, setIsGenerating] = useState(false);
   const [isDeleting, setIsDeleting] = useState<string | null>(null);
+  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
+  const [emailToDelete, setEmailToDelete] = useState<string | null>(null);
   const { toast } = useToast();
   const router = useRouter();
   const { token, email, isAuthenticated, logout } = useAuthStore();
@@ -73,17 +83,24 @@ export default function Dashboard() {
     }
   };
 
-  const handleDeleteEmail = async (dummyEmail: string) => {
-    if (!token) return;
+  const confirmDeleteEmail = (dummyEmail: string) => {
+    setEmailToDelete(dummyEmail);
+    setDeleteConfirmOpen(true);
+  };
+
+  const handleDeleteEmail = async () => {
+    if (!token || !emailToDelete) return;
     
-    setIsDeleting(dummyEmail);
+    setIsDeleting(emailToDelete);
+    setDeleteConfirmOpen(false);
+    
     try {
-      await deleteDummyEmail(token, dummyEmail);
+      await deleteDummyEmail(token, emailToDelete);
       toast({
         title: "Email alias deleted",
-        description: dummyEmail,
+        description: emailToDelete,
       });
-      setEmails(emails.filter(email => email.dummyEmail !== dummyEmail));
+      setEmails(emails.filter(email => email.dummyEmail !== emailToDelete));
     } catch (error) {
       toast({
         title: "Failed to delete email",
@@ -92,6 +109,7 @@ export default function Dashboard() {
       });
     } finally {
       setIsDeleting(null);
+      setEmailToDelete(null);
     }
   };
 
@@ -115,13 +133,13 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-violet-500 to-indigo-600">
       <div className="container mx-auto px-4 py-8">
-        <header className="flex justify-between items-center mb-8">
+        <header className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
           <div className="flex items-center gap-2">
             <Mail className="h-6 w-6 text-white" />
             <h1 className="text-2xl font-bold text-white">Ghstmail.me</h1>
           </div>
-          <div className="flex items-center gap-4">
-            <p className="text-white/80">{email}</p>
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <p className="text-white/80 text-center sm:text-left">{email}</p>
             <Button 
               variant="outline" 
               size="sm"
@@ -135,12 +153,12 @@ export default function Dashboard() {
         </header>
 
         <main className="space-y-8">
-          <div className="flex justify-between items-center">
-            <h2 className="text-3xl font-bold text-white">Your Email Aliases</h2>
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Your Email Aliases</h2>
             <Button 
               onClick={handleGenerateEmail} 
               disabled={isGenerating}
-              className="bg-white text-indigo-600 hover:bg-white/90"
+              className="bg-white text-indigo-600 hover:bg-white/90 w-full sm:w-auto"
             >
               {isGenerating ? (
                 <>
@@ -219,7 +237,7 @@ export default function Dashboard() {
                           variant="outline" 
                           size="sm"
                           className="bg-white/10 text-white hover:bg-red-500/20 border-white/20"
-                          onClick={() => handleDeleteEmail(email.dummyEmail)}
+                          onClick={() => confirmDeleteEmail(email.dummyEmail)}
                           disabled={isDeleting === email.dummyEmail}
                         >
                           {isDeleting === email.dummyEmail ? (
@@ -240,6 +258,41 @@ export default function Dashboard() {
           )}
         </main>
       </div>
+
+      {/* Delete Confirmation Dialog */}
+      <Dialog open={deleteConfirmOpen} onOpenChange={setDeleteConfirmOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <AlertTriangle className="h-5 w-5 text-red-500" />
+              Confirm Deletion
+            </DialogTitle>
+            <DialogDescription>
+              Are you sure you want to delete this email alias? This action cannot be undone.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="py-4">
+            <p className="text-sm font-medium">Email alias to delete:</p>
+            <p className="text-sm font-mono bg-muted p-2 rounded mt-1">{emailToDelete}</p>
+          </div>
+          <DialogFooter className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => setDeleteConfirmOpen(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              type="button"
+              variant="destructive"
+              onClick={handleDeleteEmail}
+            >
+              Delete
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
