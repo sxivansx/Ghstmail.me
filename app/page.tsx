@@ -474,48 +474,7 @@ export default function Home() {
         
         {/* Footer */}
         <footer className="mt-24 md:mt-36 pb-8">
-          <div className="border-t border-white/20 pt-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <Mail className="h-6 w-6 text-white" />
-                  <h3 className="text-xl font-bold text-white">Ghstmail.me</h3>
-                </div>
-                <p className="text-white/60 text-sm">
-                  Protecting your inbox with disposable email aliases since 2023.
-                </p>
-              </div>
-              
-              <div>
-                <h4 className="text-white font-semibold mb-4">Product</h4>
-                <ul className="space-y-2">
-                  <li><a href="#" className="text-white/60 hover:text-white transition-colors">Features</a></li>
-                  <li><a href="#" className="text-white/60 hover:text-white transition-colors">Chrome Extension</a></li>
-                  <li><a href="#" className="text-white/60 hover:text-white transition-colors">Pricing</a></li>
-                  <li><a href="#" className="text-white/60 hover:text-white transition-colors">FAQ</a></li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-white font-semibold mb-4">Company</h4>
-                <ul className="space-y-2">
-                  <li><a href="#" className="text-white/60 hover:text-white transition-colors">About Us</a></li>
-                  <li><a href="#" className="text-white/60 hover:text-white transition-colors">Blog</a></li>
-                  <li><a href="#" className="text-white/60 hover:text-white transition-colors">Careers</a></li>
-                  <li><a href="#" className="text-white/60 hover:text-white transition-colors">Contact</a></li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-white font-semibold mb-4">Legal</h4>
-                <ul className="space-y-2">
-                  <li><a href="#" className="text-white/60 hover:text-white transition-colors">Privacy Policy</a></li>
-                  <li><a href="#" className="text-white/60 hover:text-white transition-colors">Terms of Service</a></li>
-                  <li><a href="#" className="text-white/60 hover:text-white transition-colors">Cookie Policy</a></li>
-                </ul>
-              </div>
-            </div>
-            
+          <div className="border-white/20 pt-8">
             <div className="mt-8 pt-8 border-t border-white/20 flex flex-col md:flex-row justify-between items-center">
               <p className="text-white/60 text-sm">© 2025 Ghstmail.me. All rights reserved.</p>
               <div className="flex space-x-4 mt-4 md:mt-0">
