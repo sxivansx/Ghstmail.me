@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.ghstmail_api;
+const API_BASE_URL = process.env.NEXT_PUBLIC_GHSTMAIL_API;
 
 export async function signUp(email: string, password: string) {
   const response = await fetch(`${API_BASE_URL}/signup`, {
