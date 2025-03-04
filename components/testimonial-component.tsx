@@ -22,9 +22,8 @@ const TestimonialCard = ({
             {[...Array(5)].map((_, i) => (
               <Star
                 key={i}
-                className={`h-4 w-4 ${
-                  i < rating ? "fill-current" : "opacity-30"
-                }`}
+                className={`h-4 w-4 ${i < rating ? "fill-current" : "opacity-30"
+                  }`}
               />
             ))}
           </div>
@@ -51,15 +50,17 @@ export default function Testimonials() {
     {
       name: "Manish S.",
       role: "CEO, Delicio.in",
-      text: "Amazing product! Don't have to worry about spam emails anymore. I have been using this for quite some time and now this is my goto whenever I need to login into a website I'm unsure about!",
+      text:
+        "Amazing product! Don't have to worry about spam emails anymore. I have been using this for quite some time and now this is my goto whenever I need to login into a website I'm unsure about!",
       bgColor: "bg-indigo-400",
       initial: "M",
-      rating: 5, 
+      rating: 5,
     },
     {
-      name: "Sarah K.",
-      role: "Digital Marketer",
-      text: "I love how easy it is to create and manage disposable emails...",
+      name: "Sky Singh",
+      role: "Devops Engineer, Vance",
+      text:
+        "A unique way to solve this problem, definitely has a use-case for everyday spam use, the chrome extension makes it kinda easy to use as well",
       bgColor: "bg-pink-400",
       initial: "S",
       rating: 4, // 4 stars
