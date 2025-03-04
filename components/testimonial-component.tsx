@@ -67,7 +67,7 @@ export default function Testimonials() {
     {
       name: "Rudrax Singh",
       role: "Css God",
-      text: "Sax Sux kro itna nahi sochte",
+      text: "Sax-Sux kro itna nahi sochte",
       bgColor: "bg-green-400",
       initial: "Rx",
       rating: 5, // 3 stars
