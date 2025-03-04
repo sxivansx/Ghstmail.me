@@ -5,19 +5,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
-  Mail,
-  Shield,
-  RefreshCw,
-  Trash2,
   ArrowRight,
   CheckCircle,
   Chrome,
   Clock,
-  Lock,
-  Globe,
-  Zap,
-  Star,
   Copy,
+  Globe,
+  Lock,
+  Mail,
+  RefreshCw,
+  Shield,
+  Star,
+  Trash2,
+  Zap,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Testimonials from "@/components/testimonial-component";
@@ -220,7 +220,7 @@ export default function Home() {
                     <div className="space-y-3 flex-1">
                       <div className="bg-gray-50 rounded p-2 border border-gray-200 flex justify-between items-center">
                         <span className="text-sm text-gray-700 font-mono">
-                          abc123@ghstmail.me
+                          jonsnowknow0@ghstmail.me
                         </span>
                         <div className="flex space-x-1">
                           <div className="p-1 hover:bg-gray-200 rounded">
@@ -233,7 +233,7 @@ export default function Home() {
                       </div>
                       <div className="bg-gray-50 rounded p-2 border border-gray-200 flex justify-between items-center">
                         <span className="text-sm text-gray-700 font-mono">
-                          xyz456@ghstmail.me
+                          iambatman404@ghstmail.me
                         </span>
                         <div className="flex space-x-1">
                           <div className="p-1 hover:bg-gray-200 rounded">
