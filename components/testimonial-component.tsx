@@ -49,12 +49,12 @@ const TestimonialCard = ({
 export default function Testimonials() {
   const testimonials = [
     {
-      name: "Michael T.",
-      role: "Software Developer",
-      text: "This service has completely changed how I handle online signups...",
+      name: "Manish S.",
+      role: "CEO, Delicio.in",
+      text: "Amazing product! Don't have to worry about spam emails anymore. I have been using this for quite some time and now this is my goto whenever I need to login into a website I'm unsure about!",
       bgColor: "bg-indigo-400",
       initial: "M",
-      rating: 4, // Full 5 stars
+      rating: 5, 
     },
     {
       name: "Sarah K.",
