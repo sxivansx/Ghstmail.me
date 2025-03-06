@@ -86,7 +86,7 @@ export default function Home() {
                   </Button>
                 </Link>
                 <a
-                  href="https://chrome.google.com/webstore/placeholder"
+                  href="https://chromewebstore.google.com/detail/ghstmailme/appehhmdmakndceapnlfnebnfmahnbkk"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -332,7 +332,7 @@ export default function Home() {
 
             <div className="mt-12 text-center">
               <a
-                href="https://chrome.google.com/webstore/placeholder"
+                href="https://chromewebstore.google.com/detail/ghstmailme/appehhmdmakndceapnlfnebnfmahnbkk"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -493,7 +493,7 @@ export default function Home() {
                   </Button>
                 </Link>
                 <a
-                  href="https://chrome.google.com/webstore/placeholder"
+                  href="https://chromewebstore.google.com/detail/ghstmailme/appehhmdmakndceapnlfnebnfmahnbkk"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
