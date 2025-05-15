@@ -8,7 +8,9 @@ import { AuroraText } from "@/components/magicui/aurora-text";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 import { Button } from "@/components/ui/button";
 import { RippleButton } from "@/components/magicui/ripple-button";
+import {Marquee} from "@/components/magicui/marquee";
 import { Open_Sans } from "next/font/google";
+import { DotPattern } from "@/components/magicui/dot-pattern";
 
 import {
   ArrowRight,
@@ -25,7 +27,7 @@ import {
   Zap,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import Testimonials from "@/components/testimonial-component";
+import { reviews, ReviewCard } from "@/app/reviews";
 import { BentoGrid, BentoCard } from "@/components/magicui/bento-grid";
 
 export default function Home() {
@@ -34,9 +36,12 @@ export default function Home() {
     visible: { opacity: 1, y: 0 },
   };
 
+ 
+
   return (
-    <div className="min-h-screen bg-black">
-      <div className="container mx-auto px-4 py-6 md:py-16">
+    <div className="min-h-screen bg-black relative overflow-hidden">
+      <DotPattern className="z-0 opacity-20" width={24} height={24} cr={1.2} glow />
+      <div className="container mx-auto px-4 py-6 md:py-16 relative z-10">
         {/* Header */}
         <header className="flex flex-col sm:flex-row justify-between items-center mb-8 md:mb-16 gap-4">
           <div className="flex items-center gap-2">
@@ -99,6 +104,8 @@ export default function Home() {
                 className="row-span-1 col-span-1"
                 background={<div className="absolute inset-0 bg-gradient-to-br from-white/10 to-black/10" />}
                 Icon={Zap}
+                href="#"
+                cta=""
               />
               <BentoCard
                 name="Enhanced Security"
@@ -106,7 +113,8 @@ export default function Home() {
                 className="row-span-1 col-span-2"
                 background={<div className="absolute inset-0 bg-gradient-to-br from-white/10 to-black/10" />}
                 Icon={Shield}
-              
+                href="#"
+                cta=""
               />
               <BentoCard
                 name="Time-Saving"
@@ -114,7 +122,8 @@ export default function Home() {
                 className="row-span-1 col-span-1"
                 background={<div className="absolute inset-0 bg-gradient-to-br from-white/10 to-black/10" />}
                 Icon={Clock}
-                
+                href="#"
+                cta=""
               />
               <BentoCard
                 name="Easy Management"
@@ -122,8 +131,8 @@ export default function Home() {
                 className="row-span-1 col-span-1"
                 background={<div className="absolute inset-0 bg-gradient-to-br from-white/10 to-black/10" />}
                 Icon={Trash2}
-                
-                
+                href="#"
+                cta=""
               />
               <BentoCard
                 name="Privacy Protection"
@@ -131,13 +140,19 @@ export default function Home() {
                 className="row-span-1 col-span-1"
                 background={<div className="absolute inset-0 bg-gradient-to-br from-white/10 to-black/10" />}
                 Icon={Mail}
-
-                
+                href="#"
+                cta=""
               />
             </BentoGrid>
           </section>
-
-          
+          <section className="flex flex-col items-center justify-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-8">What Our Users Say</h2>
+            <Marquee pauseOnHover className="[--duration:20s]">
+              {reviews.map((review: any, idx: number) => (
+                <ReviewCard key={idx} {...review} />
+              ))}
+            </Marquee>
+          </section>
 
         </main>
       </div>
