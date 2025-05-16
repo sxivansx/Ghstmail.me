@@ -23,7 +23,40 @@ export const reviews = [
     role: "Css God",
     avatar: "Rx",
     avatarColor: "bg-green-400"
-  }
+  },
+  {
+    
+    text: "Sax-Sux kro itna nahi sochte",
+    name: "Rudrax Singh",
+    role: "Css God",
+    avatar: "Rx",
+    avatarColor: "bg-green-400"
+  },
+  {
+    
+    text: "Sax-Sux kro itna nahi sochte",
+    name: "Rudrax Singh",
+    role: "Css God",
+    avatar: "Rx",
+    avatarColor: "bg-green-400"
+  },
+  {
+    
+    text: "Sax-Sux kro itna nahi sochte",
+    name: "Rudrax Singh",
+    role: "Css God",
+    avatar: "Rx",
+    avatarColor: "bg-green-400"
+  },
+  {
+    
+    text: "Sax-Sux kro itna nahi sochte",
+    name: "Rudrax Singh",
+    role: "Css God",
+    avatar: "Rx",
+    avatarColor: "bg-green-400"
+  },
+
 ];
 
 export type ReviewCardProps = {
@@ -36,8 +69,8 @@ export type ReviewCardProps = {
 
 export function ReviewCard({ text, name, role, avatar, avatarColor }: ReviewCardProps) {
   return (
-    <div className="bg-[#8f6be8]/60 rounded-xl p-8 m-4 min-w-[350px] max-w-[400px] flex flex-col shadow-lg border border-white/30">
-      <div className="flex items-center mb-4">
+    <div className="bg-black rounded-xl p-4 m-2 min-w-[350px] max-w-[400px] flex flex-col shadow-lg border border-grey/40">
+      <div className="flex items-center mb-0">
         
       </div>
       <div className="italic text-white mb-6">{text}</div>

@@ -40,7 +40,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
-      <DotPattern className="z-0 opacity-20" width={24} height={24} cr={1.2} glow />
+      <DotPattern className="z-0 opacity-30" width={24} height={24} cr={1.2} glow />
       <div className="container mx-auto px-4 py-6 md:py-16 relative z-10">
         {/* Header */}
         <header className="flex flex-col sm:flex-row justify-between items-center mb-8 md:mb-16 gap-4">
@@ -145,17 +145,19 @@ export default function Home() {
               />
             </BentoGrid>
           </section>
-          <section className="flex flex-col items-center justify-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-8">What Our Users Say</h2>
-            <Marquee pauseOnHover className="[--duration:20s]">
-              {reviews.map((review: any, idx: number) => (
-                <ReviewCard key={idx} {...review} />
-              ))}
-            </Marquee>
-          </section>
-
         </main>
       </div>
+      {/* Testimonial Section - moved outside container for full width */}
+      <section className="mb-12 w-screen px-0 flex flex-col items-center justify-center relative z-10">
+        <h2 className="text-3xl font-bold text-white ">What Our Users Say</h2>
+        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden gap-2">
+          <Marquee pauseOnHover className="[--duration:2s]">
+            {reviews.map((review: any, idx: number) => (
+              <ReviewCard key={idx} {...review} />
+            ))}
+          </Marquee>
+        </div>
+      </section>
     </div>
     
   );
